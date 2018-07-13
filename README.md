@@ -1,37 +1,57 @@
-## Welcome to GitHub Pages
+## Willkommen bei dem SapphireBot
 
-You can use the [editor on GitHub](https://github.com/ConCodeDC/SapphireBot/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Mit dem SapphireBot findest du eine neue und innovative Angehensweise an das Thema Discord Bots!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Von Moderation über generelle Dinge wie zB. Eine einfach zu bedienende Helplist bis hin zu Game-Stats-Reader Commands.
 
-### Markdown
+### Dependencies
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+In diesem Projekt wurden folgende Dependencies verwendet:
 
-```markdown
-Syntax highlighted code block
+```xml
+    <dependency>
+        <groupId>net.dv8tion</groupId>
+        <artifactId>JDA</artifactId>
+        <version>LATEST</version>
+    </dependency>
 
-# Header 1
-## Header 2
-### Header 3
+    <dependency>
+        <groupId>com.sedmelluq</groupId>
+        <artifactId>lavaplayer</artifactId>
+        <version>LATEST</version>
+    </dependency>
 
-- Bulleted
-- List
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.5</version>
+    </dependency>
 
-1. Numbered
-2. List
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.11</version>
+    </dependency>
 
-**Bold** and _Italic_ and `Code` text
+    <dependency>
+        <groupId>com.github.johnnyjayjay</groupId>
+        <artifactId>CommandAPI</artifactId>
+        <version>LATEST</version>
+    </dependency>
 
-[Link](url) and ![Image](src)
+    <dependency>
+        <groupId>net.coobird</groupId>
+        <artifactId>thumbnailator</artifactId>
+        <version>0.4.8</version>
+    </dependency>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Der Bot wurde von [ConnySoftware / ConCode](https://github.com/ConCodeDC) und [strukteon](http://github.com/strukteon/) entwickelt.
 
-### Jekyll Themes
+### Ausgeprägte Wiki
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ConCodeDC/SapphireBot/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Ich habe mir Mühe gegeben, eine recht ausgeprägte Wiki zu diesem Bot zu erstellen, falls es trotzdem unbeantwortete Fragen zum Bot geben sollte, kannst du gerne ein Issue erstellen.
 
-### Support or Contact
+### Dieser Bot wurde im Rahmen von CodersClash erstellt und programmiert
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Weitere Information zum CodersClash findest du [hier](discord.zekro.de).
