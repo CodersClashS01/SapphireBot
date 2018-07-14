@@ -54,4 +54,4 @@ Ich habe mir Mühe gegeben, eine recht ausgeprägte Wiki zu diesem Bot zu erstel
 
 ### Dieser Bot wurde im Rahmen von CodersClash erstellt und programmiert
 
-Weitere Information zum CodersClash findest du [hier](discord.zekro.de).
+Weitere Information zum CodersClash findest du [hier](http://discord.zekro.de).
