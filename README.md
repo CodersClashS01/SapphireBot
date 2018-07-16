@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://www2.pic-upload.de/img/35635763/log_text-no_shadow.png"/>
+</p>
+
 ## Willkommen bei dem SapphireBot
 
 Mit dem SapphireBot findest du eine neue und innovative Angehensweise an das Thema Discord Bots!
@@ -9,6 +13,7 @@ Von Moderation über generelle Dinge wie zB. Eine einfach zu bedienende Helplist
 In diesem Projekt wurden folgende Dependencies verwendet:
 
 ```xml
+<dependencies>
     <dependency>
         <groupId>net.dv8tion</groupId>
         <artifactId>JDA</artifactId>
@@ -44,6 +49,14 @@ In diesem Projekt wurden folgende Dependencies verwendet:
         <artifactId>thumbnailator</artifactId>
         <version>0.4.8</version>
     </dependency>
+
+    <dependency>
+        <groupId>net.heyzeer0.papi</groupId>
+        <artifactId>PaladinsAPI</artifactId>
+        <version>LATEST</version>
+    </dependency>
+
+</dependencies>
 ```
 
 Der Bot wurde von [ConnySoftware / ConCode](https://github.com/ConCodeDC) und [strukteon](http://github.com/strukteon/) entwickelt.
