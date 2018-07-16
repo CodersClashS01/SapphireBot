@@ -63,7 +63,7 @@ Der Bot wurde von [ConnySoftware / ConCode](https://github.com/ConCodeDC) und [s
 
 ### Ausgeprägte Wiki
 
-Ich habe mir Mühe gegeben, eine recht ausgeprägte Wiki zu diesem Bot zu erstellen, falls es trotzdem unbeantwortete Fragen zum Bot geben sollte, kannst du gerne ein Issue erstellen.
+Ich habe mir Mühe gegeben, eine recht ausgeprägte Wiki zu diesem Bot zu erstellen, falls es trotzdem unbeantwortete Fragen zum Bot geben sollte, kannst du gerne ein Issue erstellen. [Zur Wiki](https://github.com/ConCodeDC/SapphireBot/wiki)
 
 ### Dieser Bot wurde im Rahmen von CodersClash erstellt und programmiert
 
