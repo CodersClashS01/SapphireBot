@@ -43,7 +43,6 @@ public class MySQL {
             connection = DriverManager.getConnection("jdbc:mysql://" + parts[0] + ":" + parts[1] + "/" + parts[2] + "?allowMultiQueries=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=true", parts[3], parts[4]);
             CLI.success("MySQL Connected Successfully");
         } catch (Exception e) {
-            //CLI.error(e.getCause().toString());
             CLI.error("Could not establish MySQL connection to " + parts[0] + ":" + parts[1] + " with username: " + parts[3] + " and password: " + parts[4]);
             Config.fileChangeAction(Main.config);
         }
@@ -56,7 +55,6 @@ public class MySQL {
             connection = null;
         } catch (SQLException e) {
             CLI.error("Could not disconnect from " + this.host);
-            CLI.error(e);
         }
         return this;
     }

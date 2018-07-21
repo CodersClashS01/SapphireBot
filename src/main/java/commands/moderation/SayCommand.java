@@ -18,7 +18,6 @@ import static handler.PermissionsHandler.hasPermission;
 public class SayCommand implements ICommand {
     @Override
     public void onCommand(CommandEvent event, Member member, TextChannel channel, String[] args) {
-
         String[] splitted = new String[0];
         if (hasPermission(false, new Permission[]{Permission.MESSAGE_MANAGE}, channel, member))
             splitted = Tools.argsToString(args, 0, " ").split("~");

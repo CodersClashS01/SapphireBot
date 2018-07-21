@@ -49,38 +49,23 @@ public class JackCommand implements ICommand {
                             jackPlayerList = JackPlayersSQL.getJackPlayersByUser(member.getUser().getId(), event.getGuild().getId());
                         }
                         JackPlayersSQL jackPlayersSQL = (JackPlayersSQL) jackPlayerList.get(0);
-                        System.out.println("session: " + jackPlayersSQL.getSession_id());
                         if (jackPlayersSQL.getSession_id().contains("null")) {
-                            System.out.println("1");
                             java.util.Random generator = new java.util.Random();
                             generator.setSeed(System.currentTimeMillis());
                             int i = generator.nextInt(1000000) % 1000000;
                             java.text.DecimalFormat f = new java.text.DecimalFormat("000000");
-
-                            System.out.println("2");
                             List jackSessionList_c = JackSessionSQL.getJackSessionByUser(event.getGuild().getId(), member.getUser().getId());
-
-                            System.out.println("3");
-
                             List<String> playersList = new ArrayList<>();
                             playersList.add(member.getUser().getId());
-
-                            System.out.println("4");
                             if (jackSessionList_c.size() < 1) {
-                                System.out.println("5");
                                 JackSessionSQL.createNew(event.getGuild().getId(), member.getUser().getId(), f.format(i), playersList);
-                                System.out.println("6");
                                 JackPlayersSQL.updateOld(event.getGuild().getId(), member.getUser().getId(), f.format(i), 0, null, null);
-                                System.out.println("7");
-
                                 EmbedBuilder firstBuilder = new EmbedBuilder().setTitle("Blackjack").setColor(VariableStoring.COLOR).setFooter("Blackjack Game System", "https://www2.pic-upload.de/img/35647927/JAKE_bjt_icon1024.png")
                                         .setAuthor(member.getEffectiveName(), null, member.getUser().getAvatarUrl())
                                         .setDescription("Session wurde erfolgreich erstellt!\nSpieler können durch folgende SessionID, deiner Session beitreten.")
                                         .addBlankField(false)
                                         .addField("Session ID", f.format(i), true)
                                         .addField("Session beitreten", "``" + VariableStoring.PREFIX + "jack s join " + f.format(i) + "``", true);
-
-                                System.out.println("8");
                                 channel.sendMessage(firstBuilder.build()).queue();
                             } else {
                                 MessageCreator.createError("Du hast bereits eine Session erstellt! Beende diese zuerst.", channel);
@@ -96,8 +81,6 @@ public class JackCommand implements ICommand {
                             MessageCreator.createError(event.getMessage().getContentRaw(), "Du verwendest eine inkorrekte Schreibweise.", "``" + VariableStoring.PREFIX + "help jack``", channel);
                             return;
                         }
-
-                        System.out.println(JackSessionSQL.getJackSessionBySessionID(event.getGuild().getId(), args[2]).size());
 
                         if (JackSessionSQL.getJackSessionBySessionID(event.getGuild().getId(), args[2]).size() != 1) {
                             MessageCreator.createError(event.getMessage().getContentRaw(), "Fehler beim auslesen der Datenbank.", channel);
@@ -137,13 +120,8 @@ public class JackCommand implements ICommand {
                             MessageCreator.createError("Du bist bereits in einer Session.", channel);
                             return;
                         }
-
-                        System.out.println("1");
-
                         List<String> playersList = new ArrayList<>(jackSessionSQL.getPlayers());
-                        System.out.println("2");
                         playersList.add(member.getUser().getId());
-                        System.out.println("3");
 
                         JackSessionSQL.updateOld(event.getGuild().getId(), jackSessionSQL.getCreator(), jackSessionSQL.getSession_id(), jackSessionSQL.getStarted(), null, playersList);
                         JackPlayersSQL.updateOld(event.getGuild().getId(), member.getUser().getId(), jackSessionSQL.getSession_id(), 0, null, null);
@@ -181,8 +159,6 @@ public class JackCommand implements ICommand {
                                 MessageCreator.createError("Session wurde bereits gestartet.", channel);
                                 return;
                             }
-
-                            System.out.println("Player - " + jackSessionSQLTwo.getPlayers().size());
 
                             if (jackSessionSQLTwo.getPlayers().size() <= 1) {
                                 MessageCreator.createError("Du Brauchst mindestens einen Mitspieler.", channel);
@@ -231,23 +207,14 @@ public class JackCommand implements ICommand {
                     MessageCreator.createError("Session wurde noch nicht gestartet.", channel);
                     return;
                 }
-
-                System.out.println("test");
-
-
-                System.out.println("tes1");
                 if (!jackSessionSQL.getGaming().equals(member.getUser().getId())) {
                     MessageCreator.createError("Du bist nicht an der Reihe!\n" + event.getJDA().getUserById(jackSessionSQL.getGaming()).getAsMention() + " ist an der Reihe!", channel);
                     return;
                 }
 
-                System.out.println("tes2");
-
                 int number = jackPlayersSQL.getNumber();
                 int randomNumber = (new Random()).nextInt(card_Names.length);
 
-
-                System.out.println("tes3");
                 if (card_Names[randomNumber].equalsIgnoreCase("Bube") || card_Names[randomNumber].equalsIgnoreCase("Dame") || card_Names[randomNumber].equalsIgnoreCase("König")) {
                     number = number + 10;
                 } else if (card_Names[randomNumber].equalsIgnoreCase("ass")) {
@@ -256,12 +223,8 @@ public class JackCommand implements ICommand {
                     number = number + Integer.parseInt(card_Names[randomNumber]);
                 }
 
-                System.out.println("tes4");
-
                 EmbedBuilder builder;
-                System.out.println("1");
                 if (number == 21) {
-                    System.out.println("2");
                     builder = new EmbedBuilder().setColor(VariableStoring.COLOR).setTitle("Gratulation!")
                             .setAuthor(member.getEffectiveName(), member.getUser().getAvatarUrl(), member.getUser().getAvatarUrl())
                             .addField("Gewinner", member.getEffectiveName(), true)
@@ -279,45 +242,22 @@ public class JackCommand implements ICommand {
                     }
 
                     builder.addField("Andere Spieler", playerNumbers.toString(), false);
-                    System.out.println("3");
                     for (int i = 0; i < jackSessionSQL.getPlayers().size(); i++) {
                         JackSessionSQL.removeOld(jackSessionSQL.getSession_id());
                         JackPlayersSQL.updateOld(event.getGuild().getId(), jackSessionSQL.getPlayers().get(i), null, 0, null, null);
-                        System.out.println("4");
                     }
-                    System.out.println("5");
                 } else if (number > 21) {
-                    System.out.println("6");
                     builder = new EmbedBuilder().setColor(VariableStoring.COLOR).setTitle("Verloren!")
                             .setAuthor(member.getEffectiveName(), member.getUser().getAvatarUrl(), member.getUser().getAvatarUrl())
                             .addField("Spieler", member.getEffectiveName(), true)
                             .addField("Zahl", String.valueOf(number), true)
                             .addField("Grund", "Der Spieler hatte eine Zahl über 21", false);
 
-
-                    System.out.println("7");
-
-                    int i_int;
                     for (int i = 0; i < jackSessionSQL.getPlayers().size(); i++) {
-                        System.out.println("8");
-                        System.out.println("i: " + i);
-                        System.out.println("list: " + jackSessionSQL.getPlayers());
-                        System.out.println("size: " + jackSessionSQL.getPlayers().size());
-                        System.out.println(jackSessionSQL.getPlayers().get(i));
-
-                        //hier
-
                         if (jackSessionSQL.getPlayers().get(i).contains(member.getUser().getId())){
-                            System.out.println("9");
-                            System.out.println("9 - " + i + " || " + jackSessionSQL.getPlayers().get(i));
-                            System.out.println("9 - Size " + jackSessionSQL.getPlayers().size());
                             if (i+1 == jackSessionSQL.getPlayers().size()) {
-                                System.out.println("10");
-
                                 String[] numbersArray = new String[jackSessionSQL.getPlayers().size()];
                                 String[] namesArray = new String[jackSessionSQL.getPlayers().size()];
-
-                                System.out.println("11");
 
                                 for (int j = 0; j < jackSessionSQL.getPlayers().size(); j++) {
                                     List jackPlayerList_each = JackPlayersSQL.getJackPlayersByUser(jackSessionSQL.getPlayers().get(j), event.getGuild().getId());
@@ -325,9 +265,6 @@ public class JackCommand implements ICommand {
                                     numbersArray[j] = String.valueOf(jackPlayersSQL_each.getNumber());
                                     namesArray[j] = jackPlayersSQL_each.getUser_id();
                                 }
-                                System.out.println("16");
-
-                                System.out.println(Arrays.toString(numbersArray));
 
                                 int max = 0;
                                 int name = 0;
@@ -340,14 +277,8 @@ public class JackCommand implements ICommand {
                                         name = counter -1;
                                     }
                                 }
-                                System.out.println("17");
-                                System.out.println("17 - " + max);
-                                System.out.println("17 - " + name);
-
                                 List jackPlayerList_last = JackPlayersSQL.getJackPlayersByUser(jackSessionSQL.getPlayers().get(name), event.getGuild().getId());
-                                System.out.println("18");
                                 JackPlayersSQL jackPlayersSQL_last = (JackPlayersSQL) jackPlayerList_last.get(0);
-                                System.out.println("19");
 
                                 builder = new EmbedBuilder().setColor(VariableStoring.COLOR).setTitle("Spiel beendet!")
                                         .setAuthor(event.getJDA().getUserById(jackSessionSQL.getCreator()).getName(), null, event.getJDA().getUserById(jackSessionSQL.getCreator()).getAvatarUrl())
@@ -377,8 +308,6 @@ public class JackCommand implements ICommand {
                                 JackPlayersSQL.updateOld(event.getGuild().getId(), member.getUser().getId(), jackSessionSQL.getSession_id(), jackPlayersSQL.getNumber(), null, null);
                                 builder.addField("Neuer Spieler", event.getJDA().getUserById(jackSessionSQL.getPlayers().get(i+1)).getAsMention(), false);
                             }
-                        } else {
-                            System.out.println("got - " + jackSessionSQL.getPlayers().get(i));
                         }
 
                     }
@@ -433,27 +362,12 @@ public class JackCommand implements ICommand {
                         .addField("Nächster Spieler", member.getEffectiveName(), true)
                         .addField("Letzte Zahl", String.valueOf(jackPlayersSQL_stand.getNumber()), true);
 
-                int i_int;
                 for (int i = 0; i < jackSessionSQL_stand.getPlayers().size(); i++) {
-                    System.out.println("8");
-                    System.out.println("i: " + i);
-                    System.out.println("list: " + jackSessionSQL_stand.getPlayers());
-                    System.out.println("size: " + jackSessionSQL_stand.getPlayers().size());
-                    System.out.println(jackSessionSQL_stand.getPlayers().get(i));
-
-                    //hier
 
                     if (jackSessionSQL_stand.getPlayers().get(i).contains(member.getUser().getId())){
-                        System.out.println("9");
-                        System.out.println("9 - " + i + " || " + jackSessionSQL_stand.getPlayers().get(i));
-                        System.out.println("9 - Size " + jackSessionSQL_stand.getPlayers().size());
                         if (i+1 == jackSessionSQL_stand.getPlayers().size()) {
-                            System.out.println("10");
-
                             String[] numbersArray = new String[jackSessionSQL_stand.getPlayers().size()];
                             String[] namesArray = new String[jackSessionSQL_stand.getPlayers().size()];
-
-                            System.out.println("11");
 
                             for (int j = 0; j < jackSessionSQL_stand.getPlayers().size(); j++) {
                                 List jackPlayerList_each = JackPlayersSQL.getJackPlayersByUser(jackSessionSQL_stand.getPlayers().get(j), event.getGuild().getId());
@@ -461,14 +375,9 @@ public class JackCommand implements ICommand {
                                 numbersArray[j] = String.valueOf(jackPlayersSQL_each.getNumber());
                                 namesArray[j] = jackPlayersSQL_each.getUser_id();
                             }
-                            System.out.println("16");
-
-                            System.out.println(Arrays.toString(numbersArray));
 
                             int max = 0;
                             int name = 0;
-
-                            System.out.println(Arrays.toString(numbersArray));
 
                             for (int counter = 1; counter < numbersArray.length; counter++)
                             {
@@ -510,58 +419,40 @@ public class JackCommand implements ICommand {
                             JackPlayersSQL.updateOld(event.getGuild().getId(), member.getUser().getId(), jackSessionSQL_stand.getSession_id(), jackPlayersSQL_stand.getNumber(), null, null);
                             builder_two.addField("Neuer Spieler", event.getJDA().getUserById(jackSessionSQL_stand.getPlayers().get(i+1)).getAsMention(), false);
                         }
-                    } else {
-                        System.out.println("got - " + jackSessionSQL_stand.getPlayers().get(i));
                     }
                 }
                 channel.sendMessage(builder_two.build()).queue();
                 break;
 
             case "leave":
-                System.out.println("-5");
                 List jackPlayerList_leave = JackPlayersSQL.getJackPlayersByUser(member.getUser().getId(), event.getGuild().getId());
-                System.out.println("-4");
                 if (jackPlayerList_leave.isEmpty()) {
                     JackPlayersSQL.createNew(event.getGuild().getId(), member.getUser().getId(), null, 0, null, null);
                     jackPlayerList_leave = JackPlayersSQL.getJackPlayersByUser(member.getUser().getId(), event.getGuild().getId());
                 }
-                System.out.println("-3");
                 JackPlayersSQL jackPlayersSQL_leave = (JackPlayersSQL) jackPlayerList_leave.get(0);
-
-                System.out.println("-2");
                 List jackSessionList_leave = JackSessionSQL.getJackSessionBySessionID(event.getGuild().getId(), jackPlayersSQL_leave.getSession_id());
-                System.out.println("-1");
                 JackSessionSQL jackSessionSQL_leave = (JackSessionSQL) jackSessionList_leave.get(0);
-
-                System.out.println("0");
                 if (jackSessionSQL_leave.getCreator().contains(member.getUser().getId())) {
                     MessageCreator.createError("Du kannst als Creator die Runde nicht verlassen, du kannst die Runde nur beenden.\n\n``s!jack end``", channel);
                     return;
                 }
-                System.out.println("1");
 
                 if (jackPlayersSQL_leave.getSession_id().contains("null")) {
                     MessageCreator.createError("Du bist in keiner Session.", channel);
                     return;
                 }
-                System.out.println("2");
 
                 if (jackSessionSQL_leave.getGaming().contains(member.getUser().getId())){
                     MessageCreator.createError("Du kann nicht verlassen, während du an der Reihe bist.", channel);
                     return;
                 }
-                System.out.println("3");
 
                 EmbedBuilder msg_builder_leave = new EmbedBuilder().setColor(VariableStoring.COLOR).setTitle("Blackjack Session verlassen")
                         .setDescription(member.getEffectiveName() + " hat die Session verlassen.")
                         .setAuthor(member.getEffectiveName(), null, member.getUser().getAvatarUrl());
 
-
-                System.out.println("4");
-                int id = 0;
-                List<String> arrayList = jackSessionSQL_leave.getPlayers();
                 List<String> arrayListNew = new ArrayList<>();
-                System.out.println("5");
                 for (int i = 0; i < jackSessionSQL_leave.getPlayers().size(); i++) {
                     if (jackSessionSQL_leave.getPlayers().get(i).contains(member.getUser().getId())) {
                     } else {

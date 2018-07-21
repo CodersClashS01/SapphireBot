@@ -26,7 +26,6 @@ public class DogCommand implements ICommand {
             InputStream is = con.getInputStream();
             url = con.getURL();
             is.close();
-            System.out.println(url);
             EmbedBuilder builder = new EmbedBuilder().setTitle("Wuff!").setImage(url.toString());
             channel.sendMessage(builder.build()).queue();
         } catch (IOException e) {

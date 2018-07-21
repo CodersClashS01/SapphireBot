@@ -129,18 +129,6 @@ public class VoteCommand extends ListenerAdapter implements ICommand {
             }
         } else if (args.length >= 1 && args[0].equals("-c") && args[1].equals("-id")) {
 
-            int id;
-
-            System.out.println("id before - " + args[2]);
-
-            try {
-                id = Integer.parseInt(args[2]);
-            } catch (Exception e) {
-                id = 0;
-            }
-
-            System.out.println("id after - " + id);
-
             if (event.getGuild().getTextChannelById(args[2]) != null) {
 
                 if (VoteSQL.fromUser(event.getAuthor()).exists()) {
@@ -185,9 +173,6 @@ public class VoteCommand extends ListenerAdapter implements ICommand {
                 for (int i = 0; i < options.size(); i++) {
                     msg.addReaction(digitsReaction[i]).queue();
                 }
-
-            System.out.println(question);
-            System.out.println(msg.getId());
 
             } else {
                 MessageCreator.createError(event.getMessage().getContentRaw(), "Diese Channel ID wurde nicht gefunden!", "Überprüfe ob du die ChannelID richtig geschrieben hast!", channel);

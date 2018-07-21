@@ -36,13 +36,9 @@ public class ProfileCommand implements ICommand {
     public void onCommand(CommandEvent event, Member member_event, TextChannel channel, String[] args) {
         UserSQL userSQL;
         User u;
-        System.out.println("a");
             try {
                 if (args.length >= 1) {
-                    System.out.println("b");
                     Member member;
-
-                    System.out.println("c");
                     if (event.getMessage().getMentionedUsers().size() == 1) {
                         member = event.getGuild().getMemberById(event.getMessage().getMentionedUsers().get(0).getId());
                     } else if(event.getGuild().getMemberById(args[0]) != null) {
@@ -51,8 +47,6 @@ public class ProfileCommand implements ICommand {
                         MessageCreator.createError(event.getMessage().getContentRaw(), "Mitglied mit dieser ID oder Markierung konnte auf diesem Guild nicht gefunden werden! Falsch geschrieben?", "Eingaben überprüfen", channel);
                         return;
                     }
-
-                    System.out.println("d");
                     u = member.getUser();
                     userSQL = UserSQL.fromUser(u);
 
@@ -151,11 +145,7 @@ public class ProfileCommand implements ICommand {
                     final BufferedImage PB = ImageIO.read(connection_sec.getInputStream());
                     File on_off;
 
-                    System.out.println("1");
-
                     String oState;
-
-                    System.out.println("2");
 
                     if (member.getOnlineStatus() == OnlineStatus.OFFLINE || member.getOnlineStatus() == OnlineStatus.UNKNOWN) {
                         oState = "Offline";
@@ -166,12 +156,7 @@ public class ProfileCommand implements ICommand {
                     } else {
                         oState = "Online";
                     }
-
-                    System.out.println("3");
-
                     Color on_off_Color;
-
-                    System.out.println("4");
 
                     if (ReportSQL.getReportsByUser(u.getId(), event.getGuild().getId()).size() > 3 || userSQL.getRep() < 0) {
                         on_off = badOutputfile;
@@ -186,12 +171,8 @@ public class ProfileCommand implements ICommand {
                         on_off_Color = new Color(109, 207, 246, 255);
                     }
 
-                    System.out.println("5");
-
                     channel.sendFile(img_createProfileImage(Final_Name, u.getId(), oState, String.valueOf(userSQL.getRep()), on_off_Color, userSQL.getBio(), String.valueOf(ReportSQL.getReportsByUser(u.getId(), event.getGuild().getId()).size()), userSQL.getXp(), Level, PB, on_off, "png", input, output)).queue();
 
-
-                    System.out.println("6");
                 } else if (args.length < 1){
                     Member member;
 
@@ -295,11 +276,7 @@ public class ProfileCommand implements ICommand {
                     final BufferedImage PB = ImageIO.read(connection_sec.getInputStream());
                     File on_off;
 
-                    System.out.println("1");
-
                     String oState;
-
-                    System.out.println("2");
 
                     if (member.getOnlineStatus() == OnlineStatus.OFFLINE || member.getOnlineStatus() == OnlineStatus.UNKNOWN) {
                         oState = "Offline";
@@ -311,11 +288,7 @@ public class ProfileCommand implements ICommand {
                         oState = "Online";
                     }
 
-                    System.out.println("3");
-
                     Color on_off_Color;
-
-                    System.out.println("4");
 
                     if (ReportSQL.getReportsByUser(u.getId(), event.getGuild().getId()).size() > 3 || userSQL.getRep() < 0) {
                         on_off = badOutputfile;
@@ -330,12 +303,8 @@ public class ProfileCommand implements ICommand {
                         on_off_Color = new Color(109, 207, 246, 255);
                     }
 
-                    System.out.println("5");
-
                     channel.sendFile(img_createProfileImage(Final_Name, u.getId(), oState, String.valueOf(userSQL.getRep()), on_off_Color, userSQL.getBio(), String.valueOf(ReportSQL.getReportsByUser(u.getId(), event.getGuild().getId()).size()), userSQL.getXp(), Level, PB, on_off, "png", input, output)).queue();
 
-
-                    System.out.println("6");
                 }
             } catch (IOException e) {
                 MessageCreator.createError(e.getCause().toString(), "Ein Fehler im Code ist aufgetreten! Das sollte nicht passieren! :thinking:", "Überprüfe die Konsole", channel);

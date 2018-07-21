@@ -48,7 +48,6 @@ public class JackPlayersSQL {
         this.number = number;
         this.cards = cards;
         this.ever_cards = ever_cards;
-        System.out.println("NUMMER INT" + number);
     }
 
 
