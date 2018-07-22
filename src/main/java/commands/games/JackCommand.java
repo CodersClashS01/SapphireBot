@@ -32,7 +32,7 @@ public class JackCommand implements ICommand {
             return;
         }
 
-        switch (args[0]) {
+        switch (args[0].toLowerCase()) {
 
             case "s":
 
@@ -41,7 +41,7 @@ public class JackCommand implements ICommand {
                     return;
                 }
 
-                switch (args[1]) {
+                switch (args[1].toLowerCase()) {
                     case "create":
                         List jackPlayerList = JackPlayersSQL.getJackPlayersByUser(member.getUser().getId(), event.getGuild().getId());
                         if (jackPlayerList.isEmpty()) {
@@ -148,12 +148,22 @@ public class JackCommand implements ICommand {
 
                     case "start":
                         List jackPlayerList_start = JackPlayersSQL.getJackPlayersByUser(member.getUser().getId(), event.getGuild().getId());
+                        if (jackPlayerList_start.isEmpty()) {
+                            JackPlayersSQL.createNew(event.getGuild().getId(), member.getUser().getId(), "null", 0, null, null);
+                            jackPlayerList_start = JackPlayersSQL.getJackPlayersByUser(member.getUser().getId(), event.getGuild().getId());
+                        }
                         JackPlayersSQL jackPlayersSQL_start = (JackPlayersSQL) jackPlayerList_start.get(0);
 
-                        if (jackPlayersSQL_start.equals("null")) {MessageCreator.createError("Du bist in keiner Session.", channel);return;}
+                        if (jackPlayersSQL_start.getSession_id().contains("null")) {MessageCreator.createError("Du bist in keiner Session.", channel);return;}
 
                         List jackSessionListTwo = JackSessionSQL.getJackSessionBySessionID(event.getGuild().getId(), jackPlayersSQL_start.getSession_id());
                         JackSessionSQL jackSessionSQLTwo = (JackSessionSQL) jackSessionListTwo.get(0);
+
+                        if (jackPlayersSQL_start.getSession_id().contains("null")) {
+                            MessageCreator.createError("Du bist in keiner Session.", channel);
+                            return;
+                        }
+
                         if (member.getUser().getId().equals(jackSessionSQLTwo.getCreator())) {
                             if (Boolean.parseBoolean(jackSessionSQLTwo.getStarted())) {
                                 MessageCreator.createError("Session wurde bereits gestartet.", channel);

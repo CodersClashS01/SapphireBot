@@ -120,7 +120,7 @@ public class Main {
                     .put(new SaveCommand(), "save")
                     .put(new SmokeCommand(), "smoke")
                     .put(new ShootCommand(), "shoot")
-                    .put(new JackCommand(), "jack")
+                    .put(new JackCommand(), "jack", "blackjack")
                     .put(new GoogelCommand(), "google")
                     .activate();
 
