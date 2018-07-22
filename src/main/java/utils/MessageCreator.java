@@ -20,7 +20,7 @@ public class MessageCreator {
                         .addField("Auslöser",  "`" + trigger + "`", false)
                         .addField("Grund", reason, false)
                         .addField("Mögliche Lösung", solution, false)
-                        .setFooter("SapphireBot for CodersClash © Knight 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
+                        .setFooter("SapphireBot for CodersClash © ConnysCode/ConCode 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
         ).queue();
 
     }
@@ -32,7 +32,7 @@ public class MessageCreator {
                             .setThumbnail("https://www2.pic-upload.de/img/35538072/logo_transparent.png")
                             .addField("Auslöser",  "`" + trigger + "`", false)
                             .addField("Möglicher Grund", reason, false)
-                            .setFooter("SapphireBot for CodersClash © Knight 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
+                            .setFooter("SapphireBot for CodersClash © ConnysCode/ConCode 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
             ).queue();
     }
 
@@ -43,7 +43,7 @@ public class MessageCreator {
                             .setTitle("Fehler")
                             .setThumbnail("https://www2.pic-upload.de/img/35538072/logo_transparent.png")
                             .addField("Möglicher Grund", reason, false)
-                            .setFooter("SapphireBot for CodersClash © Knight 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
+                            .setFooter("SapphireBot for CodersClash © ConnysCode/ConCode 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
             ).queue();
 
 
@@ -56,7 +56,7 @@ public class MessageCreator {
                         .setTitle("Aktion abgebrochen!")
                         .setThumbnail("https://www2.pic-upload.de/img/35538072/logo_transparent.png")
                         .addField("Grund", reason, false)
-                        .setFooter("SapphireBot for CodersClash © Knight 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
+                        .setFooter("SapphireBot for CodersClash © ConnysCode/ConCode 2018", "https://www2.pic-upload.de/img/35538072/logo_transparent.png").build()
         ).queue();
     }
 
