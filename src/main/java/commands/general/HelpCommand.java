@@ -314,7 +314,7 @@ public class HelpCommand implements ICommand {
                 case "jack":
                 case "blackjack":
                     helpMSG.addField("Erklärung", "Mit diesem Befehl kannst du Blackjack spielen.", false)
-                            .addField("Verwendung", "``" + VariableStoring.PREFIX + "blackjack [-s/leave/end/hit/stand] <create/join/start> <Angabe>``", false)
+                            .addField("Verwendung", "``" + VariableStoring.PREFIX + "blackjack [s/leave/end/hit/stand] <create/join/start> <Angabe>``", false)
                                     .addField("Beispiele", "``" + VariableStoring.PREFIX + "blackjack s create``\n" +
                                     "``" + VariableStoring.PREFIX + "blackjack s join [SessionID]``\n" +
                                     "``" + VariableStoring.PREFIX + "blackjack s start``\n" +
