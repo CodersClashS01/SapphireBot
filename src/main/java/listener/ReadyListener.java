@@ -28,6 +28,7 @@ public class ReadyListener extends ListenerAdapter {
             @Override
             public void run() {
                 Main.mySQL.connect();
+                Main.mySQL.disconnect();
             }
         }, 60 * 60 * 1000, 60 * 60 * 1000);
 
