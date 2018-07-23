@@ -27,8 +27,8 @@ public class ReadyListener extends ListenerAdapter {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                Main.mySQL.connect();
                 Main.mySQL.disconnect();
+                Main.mySQL.connect();
             }
         }, 60 * 60 * 1000, 60 * 60 * 1000);
 
