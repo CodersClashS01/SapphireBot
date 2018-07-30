@@ -303,26 +303,5 @@ public class OverwatchCommand implements ICommand {
                 }
                 break;
         }
-
-
-
-
-/*
-        try {
-            URL url = new URL("https://ow-api.com/v1/stats/");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-
-            con.setRequestProperty("Content-Type", "application/json");
-            String contentType = con.getHeaderField("Content-Type");
-
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
     }
 }
