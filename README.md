@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://namespace.media/img/images/2021/03/01/text_small-shadow.png"/>
+  <img src="https://namespace.media/img/images/2021/03/01/log_text-no_shadow.png"/>
 </p>
 
 ## Willkommen bei dem SapphireBot
