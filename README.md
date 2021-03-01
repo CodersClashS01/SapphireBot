@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www2.pic-upload.de/img/35635763/log_text-no_shadow.png"/>
+  <img src="https://namespace.media/img/images/2021/03/01/text_small-shadow.png"/>
 </p>
 
 ## Willkommen bei dem SapphireBot
