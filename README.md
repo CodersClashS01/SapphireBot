@@ -61,7 +61,7 @@ In diesem Projekt wurden folgende Dependencies verwendet:
 
 Der Bot wurde von [ConnySoftware / ConCode](https://github.com/ConCodeDC) entwickelt.
 
-> Mit Unterstützung von [strukteon](http://github.com/strukteon/) und [shinixsensei-dev](https://github.com/shinixsensei-dev/). (Im Code gekennzeichnet)
+> Mit Unterstützung von [strukteon](http://github.com/strukteon/) und [shinixsensei-dev](https://github.com/angelsflyinhell/). (Im Code gekennzeichnet)
 
 ### Ausgeprägte Wiki
 
